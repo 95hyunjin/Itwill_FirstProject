@@ -41,6 +41,7 @@
     border: 0;
     outline: none;
     position: relative;
+    font-weight: bold;
 }
 #btn {
     top: 0;
@@ -58,7 +59,7 @@
     text-align: center;
 }
 .social-icons img {
-    width: 30px ;
+    width: 50px ;
     cursor: pointer;
 }
 .input-group {
@@ -86,6 +87,7 @@
     border: 0;
     outline: none;
     border-radius: 30px;
+    font-weight: bold;
 }
 .checkbox {
     margin: 30px 10px 30px 0;
@@ -120,7 +122,9 @@ span {
 				<button type="button" class="togglebtn" onclick="register()">회원가입</button>
 			</div>
 			<div class="social-icons">
-				<img src="img/fb.png" alt="facebook"> <img src="img/tw.png" alt="twitter"> <img src="img/gl.png" alt="google">
+				<img src="/resources/img/kakaotalk_sharing_btn_medium.png" alt="kakao"> 
+				<img src="/resources/img/btnG_아이콘사각.png" alt="naver"> 
+				
 			</div>
 			<form id="login" action="" class="input-group">
 				<input type="text" class="input-field" placeholder="User ID or Email" required> 
@@ -128,13 +132,12 @@ span {
 				<!-- <input type="checkbox" class="checkbox"> -->
 				<button class="submit">Login</button>
 			</form>
-			<form id="register" action="" class="input-group">
+			<form id="register" action="/register" class="input-group" method="post">
 				<input type="text" class="input-field" placeholder="User ID" name="id" required> 
 				<input type="password" class="input-field" placeholder="Enter Password" name="pass" required> 
 				<input type="email" class="input-field" placeholder="Your Email" name="email" required> 
 				<input type="number" class="input-field" placeholder="Your PhoneNumber" name="phone" required> 
-					<span>Terms and conditions</span>
-				<button class="submit">REGISTER</button>
+				<button class="submit">회원가입하기</button>
 			</form>
 		</div>
 	</div>

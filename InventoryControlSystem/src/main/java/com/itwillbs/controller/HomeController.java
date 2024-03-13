@@ -11,6 +11,8 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import com.itwillbs.domain.MemberVO;
+
 /**
  * Handles requests for the application home page.
  */
@@ -23,10 +25,20 @@ public class HomeController {
 	 * Simply selects the home view to render by returning its name.
 	 */
 	@RequestMapping(value = "/login", method = RequestMethod.GET)
-	public void registerGET() {
+	public void loginGET() {
 		logger.debug(" registerGET() 호출");
+		
+	}
+	
+	@RequestMapping(value = "/register", method = RequestMethod.POST)
+	public void registerPOST(MemberVO vo) {
+		logger.debug(" registerPOST() 호출");
+		
+		
 		
 		
 	}
 	
-}
+	
+	
+} // controller
