@@ -126,15 +126,16 @@ span {
 				<img src="/resources/img/btnG_아이콘사각.png" alt="naver"> 
 				
 			</div>
-			<form id="login" action="" class="input-group">
-				<input type="text" class="input-field" placeholder="User ID or Email" required> 
-				<input type="password" class="input-field" placeholder="Enter Password" required> 
+			<form id="login" action="" class="input-group" method="post">
+				<input type="text" class="input-field" placeholder="User ID" name="id" required> 
+				<input type="password" class="input-field" placeholder="Enter Password" name="pass" required> 
 				<!-- <input type="checkbox" class="checkbox"> -->
 				<button class="submit">Login</button>
 			</form>
 			<form id="register" action="/register" class="input-group" method="post">
 				<input type="text" class="input-field" placeholder="User ID" name="id" required> 
-				<input type="password" class="input-field" placeholder="Enter Password" name="pass" required> 
+				<input type="password" class="input-field" placeholder="Enter Password" name="pass" required>
+				<input type="text" class="input-field" placeholder="Enter Name" name="name" required>
 				<input type="email" class="input-field" placeholder="Your Email" name="email" required> 
 				<input type="number" class="input-field" placeholder="Your PhoneNumber" name="phone" required> 
 				<button class="submit">회원가입하기</button>
