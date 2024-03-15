@@ -15,9 +15,17 @@ public interface MemberDAO {
 	
 	public void insertMember(MemberVO vo) throws Exception;
 	
+	public void insertKakaoMember(MemberVO vo) throws Exception;
+	
 	public String getSalt(MemberVO vo) throws Exception;
 	
 	public MemberVO getMember(MemberVO vo) throws Exception;
+	
+	public String getToken(String code) throws Exception;
+	
+	public MemberVO getUserInfo(String token) throws Exception;
+	
+
 	 
 
 }

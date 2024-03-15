@@ -114,6 +114,23 @@ span {
 
 </head>
 <body style="background-color: rgb(60,141,188);">
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
+  integrity="sha384-l+xbElFSnPZ2rOaPrU//2FF5B4LB8FiX5q4fXYTlfcG4PGpMkE1vcL7kNXI6Cci0" crossorigin="anonymous"></script>
+  
+<script>
+ 	 Kakao.init('548b10d7782a89ded8a479adc1d32d91'); // 사용하려는 앱의 JavaScript 키 입력
+ 	 
+ 	function loginWithKakao() {
+ 	    Kakao.Auth.authorize({
+ 	      redirectUri: 'http://localhost:8088/registerkakao',
+ 	    });
+ 	  }
+ 	 
+</script>
+
+
+
 	<div class="wrap">
 		<div class="form-wrap" >
 			<div class="button-wrap">
@@ -122,7 +139,7 @@ span {
 				<button type="button" class="togglebtn" onclick="register()">회원가입</button>
 			</div>
 			<div class="social-icons">
-				<img src="/resources/img/kakaotalk_sharing_btn_medium.png" alt="kakao"> 
+				<a id="kakao-login-btn" href="javascript:loginWithKakao()"><img src="/resources/img/kakaotalk_sharing_btn_medium.png" alt="kakao"></a> 
 				<img src="/resources/img/btnG_아이콘사각.png" alt="naver"> 
 				
 			</div>

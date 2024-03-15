@@ -31,6 +31,20 @@ public class MemberServiceImpl implements MemberService {
 		logger.debug(" 회원가입 완료!");
 		
 	}
+	
+	@Override
+	public void memberKakaoInsert(MemberVO vo) throws Exception{
+		logger.debug(" memberInsert() 실행");
+		
+		vo.setSalt(dao.createSalt());
+		
+		vo.setPass(dao.hashPass(vo.getPass(), vo.getSalt()));
+		
+		dao.insertKakaoMember(vo);
+		
+		logger.debug(" 회원가입 완료!");
+		
+	}
 
 	@Override
 	public String memberLogin(MemberVO vo) throws Exception {
@@ -53,4 +67,40 @@ public class MemberServiceImpl implements MemberService {
 		return "";
 	}
 
-}
+	@Override
+	public MemberVO kakaoInfo(String code) throws Exception {
+		logger.debug(" kakaoInsert(String code) 실행");
+		
+		String token = dao.getToken(code);
+		logger.debug(" token : "+token ); 
+		
+		return dao.getUserInfo(token);
+		
+	}
+
+	@Override
+	public int checkUser(MemberVO vo) throws Exception {
+		logger.debug(" checkUser(MemberVO vo) 실행");
+		
+		MemberVO cvo = dao.getMember(vo);
+		
+		if(cvo.getSns_email().isEmpty()) {// 회원가입 필요
+			return 0;
+		}
+		
+		
+		return 1;
+	}
+	
+	
+
+
+	
+	
+	
+	
+	
+	
+	
+
+} // serviceImpl

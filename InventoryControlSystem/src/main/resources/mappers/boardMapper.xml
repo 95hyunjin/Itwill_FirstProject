@@ -11,6 +11,12 @@
 	
 	</insert>
 
+	<insert id="insertKakaoMember">
+		insert into member (id, pass, name, email, phone, salt, sns_email) 
+		value (#{id}, #{pass}, #{name}, #{email}, #{phone}, #{salt}, #{sns_email} )
+	
+	</insert>
+	
 	<select id="getSalt" resultType="string">
 		select salt from member 
 		where id = #{id}
