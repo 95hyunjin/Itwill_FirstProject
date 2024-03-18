@@ -82,13 +82,15 @@ public class MemberServiceImpl implements MemberService {
 	public int checkUser(MemberVO vo) throws Exception {
 		logger.debug(" checkUser(MemberVO vo) 실행");
 		
+		logger.debug("checkvo : "+vo);
 		MemberVO cvo = dao.getMember(vo);
+		logger.debug(" cvo : "+cvo);
 		
-		if(cvo.getSns_email().isEmpty()) {// 회원가입 필요
+
+		if(cvo == null) { // 회원가입 필요
 			return 0;
 		}
-		
-		
+			
 		return 1;
 	}
 	

@@ -1,5 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -8,11 +9,19 @@
 </head>
 <body>
 
-	<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
-  integrity="sha384-l+xbElFSnPZ2rOaPrU//2FF5B4LB8FiX5q4fXYTlfcG4PGpMkE1vcL7kNXI6Cci0" crossorigin="anonymous"></script>
+	<c:if test="${empty param.id}">
+		<c:redirect url="/login"/>
+	</c:if>
+
+
+<script src="https://t1.kakaocdn.net/kakao_js_sdk/2.7.0/kakao.min.js"
+ integrity="sha384-l+xbElFSnPZ2rOaPrU//2FF5B4LB8FiX5q4fXYTlfcG4PGpMkE1vcL7kNXI6Cci0" crossorigin="anonymous"></script>
 <script>
-  Kakao.init('c089c8172def97eb00c07217cae17495'); // 사용하려는 앱의 JavaScript 키 입력
+  Kakao.init('548b10d7782a89ded8a479adc1d32d91'); // 사용하려는 앱의 JavaScript 키 입력
 </script>
+
+${param.id }<br>
+
 
 <button class="api-btn" onclick="kakaoLogout()">로그아웃</button>
 

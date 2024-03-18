@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 
 import com.itwillbs.domain.MemberVO;
 import com.itwillbs.service.MemberService;
@@ -66,29 +67,33 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value = "/registerkakao", method = RequestMethod.GET)
-	public String registerkakaoGET(@RequestParam("code") String code) throws Exception{
+	public String registerkakaoGET(@RequestParam("code") String code, Model model)throws Exception{
 		logger.debug("tokenGET() 호출");
 		logger.debug(" code : "+code);
 		
 		MemberVO vo =  mService.kakaoInfo(code);
+		logger.debug("!!!!!!!!!!!!!!"+vo);
 		int result = mService.checkUser(vo);
 		logger.debug(" result : "+result);
 		
 		if(result == 0) {
-			mService.memberKakaoInsert(mService.kakaoInfo(code));
+			
+			mService.memberKakaoInsert(vo);
 			
 			logger.debug(" 카카오 회원가입 완료! ");
 			
 		}
+			
+		model.addAttribute("id", vo.getId());
 		
 		logger.debug(" main 페이지로 이동");
 		return "redirect:/main";
 	}
 	
-	@GetMapping(value = "/main")
+	@RequestMapping(value = "/main",method = RequestMethod.GET)
 	public void mainGET() throws Exception{
 		logger.debug(" mainGET() 호출");
-		
+	
 	}
 	
 	
