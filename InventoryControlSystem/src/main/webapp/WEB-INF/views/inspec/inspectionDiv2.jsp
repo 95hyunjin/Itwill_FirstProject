@@ -34,8 +34,7 @@ th {
 	<div class="box-header">
 	</div>
 	
-	 <h1>입고 검수 현황</h1>
-
+	 <h1>입고 미검수 현황</h1>
 	<div class="button-container">
 		<form action="/inspec/inspectionMain" method="get">
 			<button type="submit" name="all" value="all">전체</button>
@@ -43,23 +42,26 @@ th {
 		<form action="/inspec/inspectionDiv3" method="post">
 			<button type="submit" name="status" value="검수완료">검수완료</button>
 		</form>
+		<form action="/inspec/inspectionDiv4" method="post">
+			<button type="submit" value="div4">불량제품</button>
+		</form>
 	</div>
 
 	<br>
     <table>
         <thead>
             <tr>
-                <th>PNO</th>
+            	<th>제품명</th>
                 <!-- <th>담당자 아이디</th> -->
                 <th>상태</th>
                 <th>총 검수량</th>
                 <th>남은 검수량</th>
                 <th>입고날짜</th>
-                <th>수정날짜</th>
+                <th>검수날짜</th>
             </tr>
        		<c:forEach var="inspectionList" items="${inspectionList }">
             <tr>
-                <td><a href="/inspec/inspectionRead?pno=${inspectionList.pno}">${inspectionList.pno }</td>
+                <td><a href="/inspec/inspectionRead?pno=${inspectionList.pno}">${inspectionList.pno }</a></td>
                 <%-- <td>${inspectionList.id }</td> --%>
                 <td>${inspectionList.divcode}</td>
                 <td>${inspectionList.count }</td>

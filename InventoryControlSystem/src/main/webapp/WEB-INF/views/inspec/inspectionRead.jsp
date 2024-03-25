@@ -1,4 +1,4 @@
-<%@page import="java.util.ArrayList"%>
+<%@ page import="java.util.ArrayList"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
@@ -13,6 +13,10 @@
         <td>제품 번호:</td>
         <td><input type="text" name="pno" required readonly value="${vo.pno }"></td>
     </tr>
+    <tr>
+        <td>제품명:</td>
+        <td><input type="text" name="pname" required readonly value="${vo.pname }"></td>
+    </tr>
 <%--     <tr>
         <td>담당자명:</td>
         <td><input type="text" name="id" required value="${vo.id }"></td>
@@ -23,7 +27,9 @@
     </tr>
      <tr>
         <td>검수 수량:</td>
-        <td><input type="number" name="finish_count" required value="${vo.finish_count }"></td>
+        <td><input type="number" name="finish_count" required 
+        		   min ="0" max="${vo.remain_count }" value="0">
+  		</td>
     </tr>
     <tr>
         <td>남은 수량:</td>
@@ -43,17 +49,27 @@
         <td>창고위치:</td>
         <td>
             <select name="warehouse_code" required>
-                <option value="A01">A01</option>
-                <option value="A02">A02</option>
-                <option value="A03">A03</option>
-                <option value="A04">A04</option>
+            	<c:forEach var="warehouseList" items="${warehouseList}">
+            		<option value="${warehouseList.warehouse_code }">${warehouseList.location }</option>
+            	</c:forEach>
+<!--                 <option value="A01">A01</option> -->
+<!--                 <option value="A02">A02</option> -->
+<!--                 <option value="A03">A03</option> -->
+<!--                 <option value="A04">A04</option> -->
             </select>
         </td>
     </tr>
    
 </table>
-
-<input type="submit" value="수정 완료">
+	
+	<c:choose>
+		<c:when test="${vo.remain_count == 0}">
+			<input type="text" value="수정할 것 없음" readonly>
+		</c:when>
+		<c:otherwise>
+			<input type="submit" value="수정 완료">
+		</c:otherwise>
+	</c:choose>
 </form>
 
 

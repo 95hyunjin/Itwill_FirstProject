@@ -14,9 +14,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.itwillbs.domain.CodeVO;
+import com.itwillbs.domain.ErrorVO;
 import com.itwillbs.domain.ProductVO;
+import com.itwillbs.domain.WarehouseVO;
 import com.itwillbs.service.CodeService;
 import com.itwillbs.service.InspectionService;
+import com.itwillbs.service.ProductService;
 
 @Controller
 @RequestMapping(value = "/inspec/*")
@@ -26,7 +29,8 @@ public class InspectionController {
 	private InspectionService iService;
 	@Inject
 	private CodeService cService;
-	
+	@Inject
+	private ProductService pService;
 	private static final Logger logger = LoggerFactory.getLogger(InspectionController.class);
 	
 	// 입고 검수 메인 페이지
@@ -36,8 +40,13 @@ public class InspectionController {
 		logger.debug(" inspectionMain() 실행 ");
 		List<ProductVO> inspectionList = iService.productGetInspectionList();
 		List<CodeVO> codeList = cService.allCodeList();
+		List<WarehouseVO> warehouseList = iService.warehouseList();
+		
 		logger.debug("inspectionList : " + inspectionList);
+		logger.debug("warehouseList : " + warehouseList);
+	
 		model.addAttribute("inspectionList", inspectionList);
+		model.addAttribute("warehouseList", warehouseList);
 		model.addAttribute("codeList", codeList);
 	}
 	
@@ -46,16 +55,30 @@ public class InspectionController {
 	public void inspectionReadGET(String pno, Model model, HttpSession session) throws Exception{
 		logger.debug(" inspectionReadGET() 호출 ");
 		logger.debug(" pno : "+pno);
+		List<WarehouseVO> warehouseList = iService.warehouseList();
+		logger.debug(" warehouseList : "+warehouseList);
 		ProductVO vo = iService.productRead(pno);
 		model.addAttribute("vo", vo);
+		model.addAttribute("warehouseList", warehouseList);
 	}
 	
 	// 검수 본문 업데이트 POST
 	@RequestMapping(value = "/inspectionRead", method = RequestMethod.POST)
-	public String inspectionReadPOST(String pno, Model model,ProductVO pvo) throws Exception{
+	public String inspectionReadPOST(String pno,int divcode, Model model,ProductVO pvo) throws Exception{
 		logger.debug(" inspectionReadPOST() 호출 ");
-		iService.productModify(pvo);
+		
+		logger.debug(" divcode : " + divcode);
+		if(divcode == 3) {
+			iService.productModify(pvo);
+		}
+		
 		iService.productUpdateRemain(pvo);
+		
+		logger.debug(" divcode : " + divcode);
+		if(divcode == 7) {
+			iService.insertError(pvo);
+		}
+		
 		return "redirect:/inspec/inspectionMain";
 	}
 	
@@ -74,7 +97,22 @@ public class InspectionController {
 	public void inspectionDiv3(Model model) throws Exception{
 		logger.debug(" inspectionDiv3() 호출 ");
 		List<ProductVO> inspectionList = iService.productGetInspectionDiv3();
+		List<CodeVO> codeList = cService.allCodeList();
 		model.addAttribute("inspectionList",inspectionList);
+		model.addAttribute("codeList",codeList);
 	}
+	
+	
+	// 검수 상태별 페이지 (불량제품)
+	// http://local:8088/inspec/inspectionDiv4
+	@RequestMapping(value = "/inspectionDiv4", method = RequestMethod.POST)
+	public void inspectionDiv4(Model model) throws Exception{
+		logger.debug(" inspectionDiv4() 호출 ");
+		List<ErrorVO> errorList = iService.errorList();
+		List<WarehouseVO> warehouseList = iService.warehouseList();
+		model.addAttribute("errorList",errorList);
+		model.addAttribute("warehouseList", warehouseList);
+	}
+	
 	
 }
