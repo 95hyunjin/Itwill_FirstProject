@@ -1,4 +1,4 @@
-<%@page pageEncoding="UTF-8" %>
+	<%@page pageEncoding="UTF-8" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ include file="include/header.jsp" %>
 
@@ -6,6 +6,7 @@
 	<div class="box">
 	<div class="box-header with-border">
 		<h3 class="box-title">입고예정</h3>
+		${spageVO }
 	</div>
 	
 	<div class="box-body">
@@ -33,6 +34,13 @@
 					</select>
 					</c:if>
 					<input type="hidden" name="pno" value="${store.pno }">
+					<input type="hidden" name="pname" value="${store.pname }">
+					<input type="hidden" name="count" value="${store.count }">
+					<input type="hidden" name="remain_count" value="${store.remain_count }">
+					<input type="hidden" name="regdate" value="${store.regdate }">
+					<input type="hidden" name="warehouse_code" value="${store.warehouse_code }">
+					<input type="hidden" name="category_code" value="${store.category_code }">
+					
 					<input type="submit" value="수정">
 					</form>
 				</td>
@@ -47,17 +55,21 @@
 			</c:forEach>
 			</tbody>
 		</table>
-		<div class="box-footer">
-			<button type="submit" class="btn btn-danger">수정하기</button>
-		</div>
+<!-- 		<div class="box-footer"> -->
+<!-- 			<button type="submit" class="btn btn-danger">수정하기</button> -->
+<!-- 		</div> -->
 	</div>
 		<div class="box-footer clearfix">
 			<ul class="pagination pagination-sm no-margin pull-right">
-				<li><a href="#">«</a></li>
-				<li><a href="#">1</a></li>
-				<li><a href="#">2</a></li>
-				<li><a href="#">3</a></li>
-				<li><a href="#">»</a></li>
+			<c:if test="${spageVO.prev }">
+				<li><a href="/storeinglist?page=${spageVO.startPage - 1 }">«</a></li>
+			</c:if>
+			<c:forEach var="idx" begin="${spageVO.startPage }" end="${spageVO.endPage }" step="1">
+				<li ${spageVO.cri.page == idx? "class=active": ""}><a href="/storeinglist?page=${idx }">${idx }</a></li>
+			</c:forEach>
+			<c:if test="${spageVO.next }">
+				<li><a href="/storeinglist?page=${spageVO.endPage + 1 }">»</a></li>
+			</c:if>
 			</ul>
 		</div>
 	</div>
