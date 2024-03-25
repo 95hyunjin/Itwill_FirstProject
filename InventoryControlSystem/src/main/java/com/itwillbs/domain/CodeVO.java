@@ -9,3 +9,4 @@ public class CodeVO {
 	private String smcode;
 	private String korname;
 }
+

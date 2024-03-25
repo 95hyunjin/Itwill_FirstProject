@@ -1,12 +1,15 @@
 package com.itwillbs.domain;
 
 import java.sql.Timestamp;
+
 import java.util.List;
+
 
 import lombok.Data;
 
 @Data
 public class ReleaseVO {
+
 	private String pno;
 	private int divcode;
 	private String admin;
@@ -20,6 +23,5 @@ public class ReleaseVO {
 	private String delivery_company;
 	private String delivery_phone;
 	private String delivery_manager;
-	
-	
+
 }
