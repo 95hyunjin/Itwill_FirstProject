@@ -8,7 +8,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 
+import com.itwillbs.domain.ErrorVO;
 import com.itwillbs.domain.ProductVO;
+import com.itwillbs.domain.ReleaseVO;
+import com.itwillbs.domain.WarehouseVO;
 import com.itwillbs.persistence.InspectionDAO;
 
 @Service
@@ -53,6 +56,54 @@ public class InspectionServiceImpl implements InspectionService{
 	public List<ProductVO> productGetInspectionDiv3() throws Exception {
 		
 		return idao.productDiv3();
+	}
+
+	
+	// 창고목록 조회
+	@Override
+	public List<WarehouseVO> warehouseList() throws Exception {
+
+		return idao.warehouseList();
+	}
+	
+	////////////////////////////// 출고 검수 시작 //////////////////////////
+	
+	@Override
+	public List<ProductVO> productGetrInspecitonList() throws Exception {
+		
+		return idao.productrInspectionList();
+	}
+
+	@Override
+	public void productrModify(ProductVO pvo, ReleaseVO rvo) throws Exception {
+		idao.updateInspectionForDivcode6(pvo);
+		idao.updateReleaseForDivcode6(rvo);
+		idao.updateInspectionForDivcode8(pvo);
+		idao.insertErrorForDivcode8(pvo);
+		idao.productInspectionRemainUpdate(pvo);
+	}
+
+	@Override
+	public void insertrError(ProductVO pvo) throws Exception {
+		idao.insertrError(pvo);
+	}
+
+	@Override
+	public List<ProductVO> productGetInspectionDiv5() throws Exception {
+		
+		return idao.productDiv5();
+	}
+
+	@Override
+	public List<ProductVO> productGetInspectionDiv6() throws Exception {
+		
+		return idao.productDiv6();
+	}
+
+	@Override
+	public List<ErrorVO> errorList8() throws Exception {
+	
+		return idao.errorProduct8();
 	}
 
 

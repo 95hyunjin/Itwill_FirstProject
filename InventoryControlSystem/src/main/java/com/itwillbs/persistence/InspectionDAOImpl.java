@@ -9,7 +9,10 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Repository;
 
+import com.itwillbs.domain.ErrorVO;
 import com.itwillbs.domain.ProductVO;
+import com.itwillbs.domain.ReleaseVO;
+import com.itwillbs.domain.WarehouseVO;
 
 @Repository
 public class InspectionDAOImpl implements InspectionDAO{
@@ -59,6 +62,68 @@ public class InspectionDAOImpl implements InspectionDAO{
 	public List<ProductVO> productDiv3() throws Exception {
 		
 		return sqlSession.selectList(NAMESPACE + ".productInspectionDiv3");
+	}
+
+
+	// 창고 코드 조회
+	@Override
+	public List<WarehouseVO> warehouseList() throws Exception {
+
+		return sqlSession.selectList(NAMESPACE + ".selectWarehouse");
+	}
+	
+	
+	///////////// 출고 검수 시작 //////////////
+	
+	@Override
+	public List<ProductVO> productrInspectionList() throws Exception {
+		return sqlSession.selectList(NAMESPACE + ".selectrInspection");
+	}
+
+	
+
+	@Override
+	public void insertrError(ProductVO pvo) throws Exception {
+		
+		sqlSession.insert(NAMESPACE + ".insertrError", pvo);
+	}
+
+	@Override
+	public List<ProductVO> productDiv5() throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE + ".productInspectionDiv5");
+	}
+
+	@Override
+	public List<ProductVO> productDiv6() throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE + ".productInspectionDiv6");
+	}
+
+	@Override
+	public List<ErrorVO> errorProduct8() throws Exception {
+		
+		return sqlSession.selectList(NAMESPACE + ".errorProduct8");
+	}
+
+	@Override
+	public void updateReleaseForDivcode6(ReleaseVO rvo) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateReleaseForDivcode6");
+	}
+
+	@Override
+	public void updateInspectionForDivcode6(ProductVO pvo) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateInspectionForDivcode6");
+	}
+
+	@Override
+	public void insertErrorForDivcode8(ProductVO pvo) throws Exception {
+		sqlSession.update(NAMESPACE + ".insertErrorForDivcode8");
+	}
+
+	@Override
+	public void updateInspectionForDivcode8(ProductVO pvo) throws Exception {
+		sqlSession.update(NAMESPACE + ".updateInspectionForDivcode8");
 	}
 	
 	

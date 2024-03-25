@@ -53,11 +53,30 @@
    
 </table>
 
-<input type="submit" value="수정 완료">
+<input type="submit" value="수정 완료"  onclick="return validateForm();">
 </form>
 
 
+<script>
+function validateForm() {
+    var finishCount = parseInt(document.getElementsByName("finish_count")[0].value);
+    var remainCount = parseInt(document.getElementsByName("remain_count")[0].value);
+    
+    // finish_count는 음수가 될 수 없음
+    if (finishCount < 0) {
+        alert("검수 수량은 음수일 수 없습니다.");
+        return false;
+    }
 
+    // finish_count가 remain_count를 초과할 수 없음
+    if (finishCount > remainCount) {
+        alert("검수 수량은 남은 수량을 초과할 수 없습니다.");
+        return false;
+    }
+
+    return true; 
+}
+</script>
 
 
 
