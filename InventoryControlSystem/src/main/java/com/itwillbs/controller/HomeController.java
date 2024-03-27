@@ -41,7 +41,7 @@ import com.itwillbs.service.MemberService;
  * Handles requests for the application home page.
  */
 @Controller
-public class HomeController {
+public class HomeController {  
 	
 	@Inject
 	private MemberService mService;
