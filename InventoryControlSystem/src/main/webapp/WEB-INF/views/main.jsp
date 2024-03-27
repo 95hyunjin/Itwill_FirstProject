@@ -18,7 +18,6 @@ nCri : ${nCri }
 orderPageVO : ${orderPageVO }
 <br>
 noticePageVO : ${noticePageVO } --%>
-
 <!-- 모달창 -->
 <div id="customModal" class="modal">
 	<div class="col-xs-12">
