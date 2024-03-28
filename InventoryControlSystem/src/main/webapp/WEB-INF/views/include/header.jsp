@@ -18,26 +18,25 @@
 }
 
 .upButton {
-    width: 50px; /* 버튼의 너비 */
-    height: 50px; /* 버튼의 높이 */
-    border-radius: 50%; /* 원형 모양으로 만듭니다. */
-    border: none; /* 테두리 제거 */
-    background-color: #eeeeee; /* 배경색 지정 */
-    color: #616161; /* 텍스트 색상 지정 */
-    font-size: 18px; /* 텍스트 크기 지정 */
-    cursor: pointer; /* 커서 모양 변경 */
-    outline: none; /* 포커스시 테두리 제거 */
-    box-shadow: 0px 1px 5px rgb(147 141 201 / 25%), 0px 10px 25px rgb(147 141 201 / 20%);
+    width: 50px; 
+    height: 50px; 
+    border-radius: 50%;
+    border: none; 
+    background-color: #eeeeee;
+    color: #616161; 
+    font-size: 18px;
+    outline: none; 
+    box-shadow: 0px 1px 5px rgb(147 141 201 / 25%), 0px 10px 25px rgb(147 141 201 / 20%); /* 지리는 그림자 css */
     transition: all 0.4s;
     overflow: hidden;
     position: fixed;
     display: block;
-    outline: none;
     bottom: 35px;
     right : 30px;
     z-index: 999;
     cursor: pointer;
 }
+
 .upButton:hover {
     box-shadow: 1px 1px 5px rgb(147 141 201), -1px -1px 5px #525252;
 }

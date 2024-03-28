@@ -28,9 +28,10 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 </script>
-
-
 <!-- 품번 클릭시 제품 상세보기 코드 작성 -->
+
+
+<!-- 버튼 클릭 시 페이지 제일 위로 올라가는 기능 구현 -->
 <button class = "upButton">
 	<i class = "glyphicon glyphicon-menu-up" style = "margin : auto;"></i>
 </button>
@@ -39,6 +40,10 @@ document.addEventListener("DOMContentLoaded", function() {
         window.scrollTo({ top: 0, behavior: 'smooth' });
     });
 </script>
+<!-- 버튼 클릭 시 페이지 제일 위로 올라가는 기능 구현 -->
+
+
+
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">현재 재고</h3>
