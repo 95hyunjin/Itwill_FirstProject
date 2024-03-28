@@ -26,14 +26,23 @@ document.addEventListener("DOMContentLoaded", function() {
         });
     });
 });
+
 </script>
 
 
 <!-- 품번 클릭시 제품 상세보기 코드 작성 -->
-
+<button class = "upButton">
+	<i class = "glyphicon glyphicon-menu-up" style = "margin : auto;"></i>
+</button>
+<script>
+    document.querySelector('.upButton').addEventListener('click', function() {
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    });
+</script>
 <div class="box">
 	<div class="box-header">
 		<h3 class="box-title">현재 재고</h3>
+		
 	</div>
 		<div class="box-body">
 			<div id="example1_wrapper"

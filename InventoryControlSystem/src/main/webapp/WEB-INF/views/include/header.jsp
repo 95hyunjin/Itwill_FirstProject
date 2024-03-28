@@ -5,17 +5,44 @@
 <html>
   <head>
   <style>
-  .popup-container {
-    position: fixed;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    background-color: white;
-    border: 1px solid #ccc;
-    padding: 20px;
-    z-index: 9999; /* 팝업창을 다른 요소 위로 올립니다. */
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 팝업창에 그림자 효과를 추가합니다. */
+.popup-container {
+	position: fixed;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	background-color: white;
+	border: 1px solid #ccc;
+	padding: 20px;
+	z-index: 9999; /* 팝업창을 다른 요소 위로 올립니다. */
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); /* 팝업창에 그림자 효과를 추가합니다. */
 }
+
+.upButton {
+    width: 50px; /* 버튼의 너비 */
+    height: 50px; /* 버튼의 높이 */
+    border-radius: 50%; /* 원형 모양으로 만듭니다. */
+    border: none; /* 테두리 제거 */
+    background-color: #eeeeee; /* 배경색 지정 */
+    color: #616161; /* 텍스트 색상 지정 */
+    font-size: 18px; /* 텍스트 크기 지정 */
+    cursor: pointer; /* 커서 모양 변경 */
+    outline: none; /* 포커스시 테두리 제거 */
+    box-shadow: 0px 1px 5px rgb(147 141 201 / 25%), 0px 10px 25px rgb(147 141 201 / 20%);
+    transition: all 0.4s;
+    overflow: hidden;
+    position: fixed;
+    display: block;
+    outline: none;
+    bottom: 35px;
+    right : 30px;
+    z-index: 999;
+    cursor: pointer;
+}
+.upButton:hover {
+    box-shadow: 1px 1px 5px rgb(147 141 201), -1px -1px 5px #525252;
+}
+
+
 
   </style>
     <meta charset="UTF-8">
