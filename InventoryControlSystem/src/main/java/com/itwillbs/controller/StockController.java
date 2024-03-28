@@ -36,6 +36,7 @@ public class StockController {
 	// http://localhost:8088/stock/stockMainCri
 	// 실제로 사용하게 될 주소
 	// http://localhost:8088/stock/stockMainCri?page=1&pageSize=10
+	// http://localhost:8088/stock/stockMainCri?page=1&pageSize=10
 	@RequestMapping(value = "/stockMainCri", method = RequestMethod.GET)
 	public void listCriGET(Criteria cri, Model model, HttpSession session) throws Exception {
 		logger.debug(" /stock/stockMainCri -> listCriGET() 실행 ");
